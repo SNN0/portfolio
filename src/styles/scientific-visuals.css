@@ -1,0 +1,31 @@
+.protein-ribbon { width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 10px 18px rgba(40,199,183,.18)); }
+.ribbon-shadow, .ribbon-main { fill: none; stroke-linecap: round; }
+.ribbon-shadow { stroke: rgba(8,17,31,.25); stroke-width: 25; }
+.ribbon-main { stroke: url(#ribbon); stroke-width: 15; stroke-dasharray: 18 5; animation: ribbonFlow 9s linear infinite; }
+.residue { fill: var(--neon-green); stroke: #07111f; stroke-width: 2; animation: pulse 2.4s ease-in-out infinite; }
+.network-graph { width: 100%; max-height: 320px; overflow: visible; }
+.network-graph line { stroke: rgba(78,168,255,.55); stroke-width: .7; }
+.network-graph circle { fill: #172c49; stroke: var(--omics-blue); stroke-width: 1; }
+.network-graph text { fill: #71849c; font: 4px monospace; }
+.network-graph .central-node circle { fill: var(--protein-purple); stroke: #fff; animation: pulse 2s infinite; }
+.network-graph .central-node text { fill: #fff; font-weight: 800; }
+.heatmap-wrap { display: grid; grid-template-columns: 20px 1fr; gap: 5px; padding: 12px; background: #0b1829; color: #9babc0; font: 9px monospace; }
+.heatmap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+.heatmap i { aspect-ratio: 1; background: linear-gradient(135deg, var(--omics-blue), var(--omics-red)); }
+.heatmap i:nth-child(3n) { background: linear-gradient(135deg, var(--teal), var(--protein-purple)); }
+.heatmap-axis { writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; }
+.heatmap-wrap > span { grid-column: 2; text-align: center; }
+.pipeline { display: flex; align-items: stretch; gap: 15px; overflow-x: auto; padding: 4px 2px 12px; }
+.pipeline div { min-width: 130px; flex: 1; position: relative; padding: 12px; background: #e2e7e8; border: 1px solid #a9b4b8; box-shadow: inset 3px 0 var(--teal); }
+.pipeline div:not(:last-child)::after { content: ">"; position: absolute; right: -12px; top: 50%; color: #40556d; font: 900 14px monospace; }
+.pipeline span { display: block; color: #648090; font: 9px monospace; }
+.pipeline strong { display: block; margin-top: 5px; font-size: 11px; line-height: 1.35; }
+.descriptor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; padding: 4px 12px 12px; }
+.descriptor-grid div { display: flex; align-items: center; gap: 6px; padding: 7px; color: #cbd9e8; background: #0c1e32; font: 9px monospace; }
+.descriptor-grid i { width: 7px; height: 7px; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+.molecule-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.molecule-particles i { position: absolute; left: var(--x); top: var(--y); width: 4px; height: 4px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); animation: drift 5s var(--delay) ease-in-out infinite alternate; }
+@keyframes ribbonFlow { to { stroke-dashoffset: -92; } }
+@keyframes pulse { 50% { opacity: .55; transform: scale(.92); transform-origin: center; } }
+@keyframes drift { to { transform: translate(12px, -16px); opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .ribbon-main, .residue, .network-graph .central-node circle, .molecule-particles i { animation: none; } }

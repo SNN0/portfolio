@@ -1,0 +1,19 @@
+:root {
+  --bg: #07111f;
+  --desktop-bg: #0b1b2e;
+  --window-gray: #d7d7d7;
+  --window-light: #f2f2f2;
+  --window-dark: #777f89;
+  --titlebar-blue: #1f3a5f;
+  --titlebar-blue-active: #244a7c;
+  --teal: #28c7b7;
+  --neon-green: #75ff9e;
+  --protein-purple: #9b7cff;
+  --omics-red: #f05b63;
+  --omics-blue: #4ea8ff;
+  --text-dark: #10131a;
+  --text-light: #f7fbff;
+  --muted: #6d7d91;
+  --warning: #ffd166;
+  --shadow: 10px 12px 34px rgba(0, 0, 0, .38);
+}
