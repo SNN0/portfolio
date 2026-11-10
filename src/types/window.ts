@@ -6,6 +6,7 @@ export type AppWindow = {
   title: string;
   isOpen: boolean;
   isMinimized: boolean;
+  isMaximized?: boolean;
   zIndex: number;
   x: number;
   y: number;

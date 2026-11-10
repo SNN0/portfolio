@@ -1,23 +1,29 @@
+"use client";
+
+import { useState } from "react";
+import { Download, Monitor, UserRound } from "lucide-react";
 import { profile } from "@/data/profile";
-import { Card } from "@/components/ui/Card";
-import { SectionHeader } from "@/components/common/SectionHeader";
+import { experience } from "@/data/experience";
+import { RetroTabs } from "@/components/common/RetroTabs";
 
+const tabs = [{ id: "general", label: "General" }, { id: "experience", label: "Experience" }, { id: "education", label: "Education" }, { id: "methods", label: "Methods" }] as const;
+type TabId = typeof tabs[number]["id"];
 const layers = [
-  { name: "Bench Layer", items: "PCR, SDS-PAGE, cloning, chromatography, diagnostic assays" },
-  { name: "Data Layer", items: "RNA-seq, TCGA/GEO, proteomics, survival data, MD simulation states" },
-  { name: "Model Layer", items: "SVM, Random Forest, Logistic Regression, GCN, GRU, LSTM, GNNs" },
+  { name: "Bench layer", items: "PCR, SDS-PAGE, cloning, chromatography, diagnostic assays", description: "Understanding the experiments and physical constraints behind biological measurements." },
+  { name: "Data layer", items: "RNA-seq, TCGA/GEO, proteomics, survival analysis, MD simulation states", description: "Connecting molecular datasets with disease context and interpretable biological questions." },
+  { name: "Model layer", items: "SVM, Random Forest, Logistic Regression, GCN, GRU, LSTM, GNNs", description: "Choosing representations and computational methods that fit the biological problem." },
 ];
-
 export function AboutApp() {
-  return <div className="app-shell scrollable">
-    <SectionHeader eyebrow="SYSTEM IDENTITY" title="Molecular biology at the base. AI in the loop." />
-    <div className="identity-grid">
-      <Card><dl className="system-list"><div><dt>Name</dt><dd>{profile.displayName}</dd></div><div><dt>Base Layer</dt><dd>Molecular Biotechnology</dd></div><div><dt>Current Module</dt><dd>M.Sc. Artificial Intelligence</dd></div><div><dt>Research Mode</dt><dd>Bioinformatics + Computational Biology + Protein AI</dd></div><div><dt>Location</dt><dd>{profile.location}</dd></div></dl></Card>
-      <div className="narrative"><p>I started from molecular biotechnology, where biological systems are learned from the bench level: PCR, cloning, chromatography, SDS-PAGE, and molecular diagnostics. I now work on the computational side of biology, building AI-driven workflows for omics data, disease systems biology, protein dynamics, and drug discovery.</p><blockquote>How can machine learning models help us understand biological systems that are too high-dimensional, dynamic, or disordered for static interpretation?</blockquote></div>
+  const [tab, setTab] = useState<TabId>("general");
+  return <div className="workstation-app about-properties">
+    <header className="properties-heading"><Monitor size={22} /><div><h2>System Properties</h2><p>The person behind the workstation.</p></div><span>SinanOS / BioAI</span></header>
+    <RetroTabs tabs={tabs} value={tab} onChange={setTab} label="System properties" prefix="properties" />
+    <div key={tab} className="properties-panel scrollable" role="tabpanel" id="properties-panel" aria-labelledby={`properties-tab-${tab}`} tabIndex={0}>
+      {tab === "general" && <><div className="identity-overview"><div className="identity-emblem" aria-hidden="true"><UserRound size={48} /><span>SE</span></div><div><p className="terminal-kicker">REGISTERED TO</p><h2>{profile.displayName}</h2><p>{profile.title}</p><small>{profile.location}</small></div></div><fieldset className="retro-fieldset"><legend>Research profile</legend><p>{profile.shortBio}</p><dl className="properties-list"><div><dt>Foundation</dt><dd>Molecular Biotechnology</dd></div><div><dt>Current training</dt><dd>M.Sc. Artificial Intelligence</dd></div><div><dt>Research interests</dt><dd>Omics, protein dynamics & drug discovery</dd></div></dl></fieldset><p className="properties-question">How can machine learning help us understand biological systems that are high-dimensional, dynamic, or disordered?</p></>}
+      {tab === "experience" && <div className="properties-timeline">{experience.map((item) => <article key={item.role}><span>{item.period}</span><div><h3>{item.role}</h3><strong>{item.organization}</strong><p>{item.description}</p></div></article>)}</div>}
+      {tab === "education" && <div className="properties-timeline">{[...profile.education].reverse().map((item) => <article key={item.degree}><span>{item.years}</span><div><h3>{item.degree}</h3><strong>{item.institution}</strong><p>{item.focus}</p></div></article>)}</div>}
+      {tab === "methods" && <div className="properties-methods">{layers.map((layer, index) => <fieldset key={layer.name} className="retro-fieldset"><legend>0{index + 1} / {layer.name}</legend><h3>{layer.items}</h3><p>{layer.description}</p></fieldset>)}</div>}
     </div>
-    <h3 className="subhead">Education timeline</h3>
-    <div className="timeline">{profile.education.map((item) => <article key={item.degree}><span>{item.years}</span><div><strong>{item.degree}</strong><p>{item.institution}</p><small>{item.focus}</small></div></article>)}</div>
-    <h3 className="subhead">Bench-to-model bridge</h3>
-    <div className="layer-grid">{layers.map((layer, i) => <Card key={layer.name}><span>0{i + 1}</span><h4>{layer.name}</h4><p>{layer.items}</p></Card>)}</div>
+    <footer className="properties-footer"><span>Molecular biology at the base. AI in the loop.</span><a className="retro-button" href={profile.cvPath} download><Download size={14} />Download CV</a></footer>
   </div>;
 }

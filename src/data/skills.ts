@@ -1,5 +1,5 @@
 export const skills = {
-  programming: ["Python", "R", "Bash", "Linux/Unix command line"],
+  programming: ["Python", "R", "Bash", "Linux/Unix command line", "High-performance computing"],
   bioinformatics: ["DESeq2", "ClinVar", "Cytoscape", "BLAST", "TCGA/GEO workflows"],
   machineLearning: ["SVM", "Random Forest", "Logistic Regression", "Feature selection"],
   deepLearning: ["GCN", "GRU", "LSTM", "GNNs"],

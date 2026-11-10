@@ -14,4 +14,10 @@ export type Project = {
   researchSignal: string;
   whyItMatters: string;
   publicViewNote: string;
+  appointment?: {
+    role: string;
+    funding: string;
+    projectNumber: string;
+    principalInvestigator: string;
+  };
 };

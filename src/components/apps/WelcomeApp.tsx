@@ -4,13 +4,13 @@ import { ArrowRight, Download, FlaskConical, TerminalSquare } from "lucide-react
 import { profile } from "@/data/profile";
 import { useWindowStore } from "@/hooks/useWindowStore";
 import { ProteinRibbon } from "@/components/scientific/ProteinRibbon";
-import { MoleculeParticles } from "@/components/scientific/MoleculeParticles";
+import { projects } from "@/data/projects";
+import { publications } from "@/data/publications";
 import { Button } from "@/components/ui/Button";
 
 export function WelcomeApp() {
   const open = useWindowStore((state) => state.openWindow);
   return <div className="welcome-app app-shell">
-    <MoleculeParticles />
     <div className="welcome-copy">
       <p className="terminal-kicker">SINANOS::IDENTITY_LOADED</p>
       <h1>{profile.displayName}</h1>
@@ -25,6 +25,6 @@ export function WelcomeApp() {
       </div>
       <div className="status-strip"><span>Current focus</span>AI for protein dynamics, omics-scale disease profiling, and druggable state discovery.</div>
     </div>
-    <div className="welcome-visual"><ProteinRibbon/><div className="visual-caption"><i />Dynamic molecular state online</div></div>
+    <div className="welcome-visual"><ProteinRibbon/><div className="visual-caption"><i />Protein dynamics / conceptual view</div><div className="welcome-counts"><span><strong>{projects.length}</strong>case files</span><span><strong>{publications.filter((item) => item.status === "published").length}</strong>published</span><span><strong>{publications.filter((item) => item.status === "in-press").length}</strong>in press</span></div></div>
   </div>;
 }

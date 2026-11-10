@@ -28,6 +28,7 @@ Primary content lives in `src/data`:
 - `skills.ts`
 - `researchAreas.ts`
 - `labNotes.ts`
+- `experience.ts` (research, industry experience, and incoming appointments)
 
 ## CV
 
@@ -42,6 +43,12 @@ Replace that file while keeping the filename stable to update the download.
 ## Shareable routes
 
 The desktop uses URL hashes, including `/#about`, `/#projects`, `/#publications`, and `/#project/cryptic-pocket-hunter`.
+
+## Desktop interface
+
+Projects uses a Research Explorer: select a file to preview it, then double-click, press Enter, or use Open case file. About has four System Properties tabs. Lab Notes includes word wrap, search, and text downloads. Windows support maximize/restore through the title-bar button or a title-bar double-click.
+
+Visual changes are in `src/styles/workstation.css`. The per-application review and browser checks are recorded in `docs/SINANOS_UI_REVIEW.md`.
 
 ## Deployment
 

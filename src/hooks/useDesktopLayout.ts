@@ -14,9 +14,9 @@ export const defaultDesktopPositions: DesktopPositions = {
   "model-zoo": { x: 132, y: 18 },
   publications: { x: 132, y: 122 },
   "lab-notes": { x: 132, y: 226 },
-  terminal: { x: 246, y: 18 },
-  contact: { x: 246, y: 122 },
-  cv: { x: 246, y: 226 },
+  terminal: { x: 18, y: 330 },
+  contact: { x: 132, y: 330 },
+  cv: { x: 18, y: 434 },
 };
 
 function isSavedLayout(value: unknown): value is DesktopPositions {

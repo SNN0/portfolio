@@ -31,6 +31,6 @@ function AppContent({ item }: { item: AppWindow }) {
 
 export function WindowManager() {
   const windows = useWindowStore((state) => state.windows);
-  const topZ = useWindowStore((state) => state.topZ);
-  return <>{windows.filter((item) => item.isOpen).map((item) => <WindowFrame key={item.id} windowData={item} active={!item.isMinimized && item.zIndex === topZ}><AppContent item={item}/></WindowFrame>)}</>;
+  const activeId = windows.filter((item) => item.isOpen && !item.isMinimized).reduce<typeof windows[number] | undefined>((top, item) => !top || item.zIndex > top.zIndex ? item : top, undefined)?.id;
+  return <>{windows.filter((item) => item.isOpen).map((item) => <WindowFrame key={item.id} windowData={item} active={item.id === activeId}><AppContent item={item}/></WindowFrame>)}</>;
 }

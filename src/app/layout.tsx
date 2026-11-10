@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "../styles/workstation.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sinanos.vercel.app"),
+  metadataBase: new URL("https://sinaneyuboglu.dev"),
+  alternates: { canonical: "/" },
   title: { default: "Sinan Eyüboğlu - BioAI Workstation", template: "%s | SinanOS" },
   description: "Portfolio of Sinan Eyüboğlu, a molecular biotechnology graduate and AI master's student working on bioinformatics, omics, protein dynamics, computational biology, and AI-assisted drug discovery.",
   keywords: ["BioAI", "computational biology", "bioinformatics", "omics", "protein dynamics", "drug discovery", "Sinan Eyüboğlu"],

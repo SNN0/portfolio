@@ -21,4 +21,35 @@ export const projects: Project[] = [
     id: "cryptic-pocket-hunter", title: "Predicting Cryptic Druggable Pockets in IDPs Using Deep Learning", appName: "CrypticPocket_Hunter.exe", institution: "Turkish-German University", year: "2026", status: "Active research prototype", domain: ["AI-assisted drug discovery", "IDPs", "GNNs", "Dynamic binding sites"],
     mission: "Design a deep learning pipeline to predict transient cryptic druggable pockets in dynamic and disordered protein systems.", biologicalQuestion: "Can dynamic, geometric, and chemical atom-level descriptors reveal temporary druggable states in proteins that are difficult to target using static structures?", dataLayer: ["MD simulation frames", "Atom-level descriptors", "Dynamic features", "Geometric features", "Chemical features"], pipeline: ["MD simulation frame extraction", "Atom-level descriptor engineering", "Dynamic/geometric/chemical feature integration", "Graph neural representation learning", "Temporal pocket formation modeling", "Candidate cryptic state prioritization"], modelStack: ["GNN", "LSTM", "Atom-level descriptors", "Dynamic pocket modeling", "Druggability analysis"], researchSignal: "Reframed druggability as a time-dependent molecular event by modeling transient pocket formation in dynamic protein ensembles.", whyItMatters: "Some disease-relevant proteins may appear undruggable in static structures. Dynamic modeling can reveal transient therapeutic opportunities that only exist in specific conformational states.", publicViewNote: "Public summary only. Active project details, source code, model weights, and unpublished outputs are intentionally hidden."
   },
+  {
+    id: "multiomics-organoid-drug-resistance",
+    title: "Multi-omics Integration, AI, and Organoid Technologies for Investigating Cancer Drug Efficacy and Resistance",
+    appName: "Organoid_Research.app",
+    institution: "Dokuz Eylül University",
+    year: "Incoming",
+    status: "Incoming Researcher / BAP Scholarship",
+    domain: ["Multi-omics", "Artificial intelligence", "Organoids", "Cancer drug resistance"],
+    mission: "Investigating cancer drug efficacy and resistance through multi-omics integration, AI, and organoid technologies.",
+    biologicalQuestion: "How can multi-omics, AI, and organoid technologies be integrated to investigate cancer drug efficacy and resistance?",
+    dataLayer: [],
+    pipeline: [],
+    modelStack: [],
+    researchSignal: "Incoming researcher appointment with BAP scholarship support.",
+    whyItMatters: "Connecting molecular data and organoid technologies to the study of cancer drug efficacy and resistance.",
+    publicViewNote: "Incoming research appointment. Project scope and appointment status follow the CV.",
+    appointment: {
+      role: "Incoming Researcher (BAP Scholarship)",
+      funding: "Dokuz Eylül University Scientific Research Projects (BAP)",
+      projectNumber: "4109",
+      principalInvestigator: "Prof. Dr. Şerife Esra Erdal Bağrıyanık",
+    },
+  },
 ];
+
+export const projectContributions: Record<string, string> = {
+  "cryptic-pocket-hunter": "Designed dynamic, geometric, and chemical atom-level descriptors and a pipeline combining GNNs with LSTM networks.",
+  "idp-dynamics": "Developed GCN and GRU models for conformational prediction and compared force-field behavior in structural analysis.",
+  "pdac-biomarker": "Developed classification models, selected features and hub genes, and evaluated biomarker relevance through survival analysis.",
+  "alzheimers-apoe-network": "Analyzed RNA-seq data, investigated genotype-expression correlations, and built gene co-expression networks.",
+  "drug-response-profiler": "Investigated CNV, mutation, and expression signals; performed Cox regression and interpreted hazard ratios and C-indices.",
+};

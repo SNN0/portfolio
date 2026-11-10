@@ -15,6 +15,7 @@ type WindowState = {
   restoreWindow: (id: string) => void;
   moveWindow: (id: string, x: number, y: number) => void;
   resizeWindow: (id: string, width: number, height: number) => void;
+  toggleMaximizeWindow: (id: string) => void;
 };
 
 function hashFor(appId: AppId, payload?: AppWindow["payload"]) {
@@ -54,4 +55,8 @@ export const useWindowStore = create<WindowState>((set, get) => ({
   },
   moveWindow: (id, x, y) => set({ windows: get().windows.map((item) => item.id === id ? { ...item, x, y } : item) }),
   resizeWindow: (id, width, height) => set({ windows: get().windows.map((item) => item.id === id ? { ...item, width, height } : item) }),
+  toggleMaximizeWindow: (id) => {
+    const zIndex = get().topZ + 1;
+    set({ windows: get().windows.map((item) => item.id === id ? { ...item, isMaximized: !item.isMaximized, isMinimized: false, zIndex } : item), topZ: zIndex });
+  },
 }));

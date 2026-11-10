@@ -1,4 +1,4 @@
-export type PublicationStatus = "published" | "under-review" | "submitted" | "in-preparation";
+export type PublicationStatus = "published" | "in-press" | "under-review" | "submitted" | "in-preparation";
 
 export type Publication = {
   title: string;

@@ -6,7 +6,7 @@ import { useWindowStore } from "@/hooks/useWindowStore";
 import type { AppId } from "@/types/window";
 
 const programs: { label: string; app: AppId; icon: typeof Dna }[] = [
-  { label: "Omics Explorer", app: "research", icon: Network }, { label: "Protein Dynamics Viewer", app: "projects", icon: Dna }, { label: "Model Zoo", app: "model-zoo", icon: Microscope }, { label: "Publications", app: "publications", icon: FileText }, { label: "Lab Notes", app: "lab-notes", icon: BookOpenText }, { label: "Terminal", app: "terminal", icon: TerminalSquare },
+  { label: "System Properties", app: "about", icon: Contact }, { label: "Research Matrix", app: "research", icon: Network }, { label: "Research Explorer", app: "projects", icon: Dna }, { label: "Model Zoo", app: "model-zoo", icon: Microscope }, { label: "Publications", app: "publications", icon: FileText }, { label: "Lab Notes", app: "lab-notes", icon: BookOpenText }, { label: "Terminal", app: "terminal", icon: TerminalSquare },
 ];
 
 export function StartMenu({ close }: { close: () => void }) {

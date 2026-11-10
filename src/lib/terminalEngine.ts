@@ -6,7 +6,7 @@ import type { AppId } from "@/types/window";
 
 export type TerminalAction = { output: string; open?: AppId; projectId?: string; href?: string; clear?: boolean };
 
-const aliases: Record<string, string> = { pdac: "pdac-biomarker", alzheimer: "alzheimers-apoe-network", "drug-response": "drug-response-profiler", idp: "idp-dynamics", pocket: "cryptic-pocket-hunter" };
+const aliases: Record<string, string> = { pdac: "pdac-biomarker", alzheimer: "alzheimers-apoe-network", "drug-response": "drug-response-profiler", idp: "idp-dynamics", pocket: "cryptic-pocket-hunter", organoid: "multiomics-organoid-drug-resistance" };
 
 export function runTerminalCommand(raw: string): TerminalAction {
   const command = raw.trim().toLowerCase();

@@ -42,7 +42,7 @@ export function Desktop() {
       <DraggableDesktopItem position={positions.cv} onMove={(position) => moveIcon("cv", position)} onSelect={() => setSelectedIcon("cv")}><DesktopIcon label="Download_CV.pdf" icon={FileDown} selected={selectedIcon === "cv"} onSelect={() => setSelectedIcon("cv")} onOpen={downloadCv}/></DraggableDesktopItem>
     </div>
     <DesktopStatusPanel onResetLayout={() => { resetLayout(); setSelectedIcon(null); }}/>
-    <div className="mobile-launcher"><span>SINANOS MOBILE RECOVERY MODE</span><h1>Select an app</h1><div>{icons.map(({ label, app, mobileIcon: Icon }) => <button key={label} onClick={() => open(app)}><Icon/>{label}</button>)}<a href={profile.cvPath} download><FileDown/>Download CV</a></div></div>
+    <div className="mobile-launcher"><span>SINANOS / RESEARCH WORKSTATION</span><h1>Explore the research</h1><div>{icons.map(({ label, app, mobileIcon: Icon }) => <button key={label} onClick={() => open(app)}><Icon/>{label}</button>)}<a href={profile.cvPath} download><FileDown/>Download CV</a></div></div>
     <WindowManager/>
     <Taskbar/>
   </main>;
