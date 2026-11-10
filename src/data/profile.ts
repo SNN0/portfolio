@@ -11,6 +11,6 @@ export const profile = {
   cvPath: "/docs/Sinan_Eyuboglu_CV.pdf",
   education: [
     { degree: "B.Sc. Molecular Biotechnology", institution: "Turkish-German University", years: "2021-2025", focus: "Bioinformatics, molecular biology, biotechnology techniques, wet-lab and in silico research." },
-    { degree: "M.Sc. Artificial Intelligence", institution: "Gebze Technical University", years: "2025-Present", focus: "Machine learning, deep learning, pattern recognition, statistical data analysis, big data analytics, and BioAI applications." },
+    { degree: "M.Sc. Artificial Intelligence", institution: "Gebze Technical University", years: "2025 – Jul 2027 (expected)", focus: "Machine learning, deep learning, pattern recognition, statistical data analysis, and big data analytics.", thesis: "Computational Modeling of Post-Transcriptional Regulatory Heterogeneity in Alzheimer's Disease." },
   ],
 };

@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 
 const folders = [
   { id: "all", label: "All research", ids: projects.map((project) => project.id) },
-  { id: "omics", label: "Disease & omics", ids: ["pdac-biomarker", "alzheimers-apoe-network", "drug-response-profiler"] },
+  { id: "omics", label: "Disease & omics", ids: ["pdac-biomarker", "alzheimers-apoe-network", "drug-response-profiler", "regsplicenet"] },
   { id: "proteins", label: "Protein AI", ids: ["idp-dynamics", "cryptic-pocket-hunter"] },
   { id: "incoming", label: "Incoming research", ids: ["multiomics-organoid-drug-resistance"] },
 ];

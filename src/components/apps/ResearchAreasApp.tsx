@@ -7,10 +7,10 @@ import { Badge } from "@/components/ui/Badge";
 import { NetworkGraph } from "@/components/scientific/NetworkGraph";
 import { SectionHeader } from "@/components/common/SectionHeader";
 const related: Record<string, string[]> = {
-  omics: ["pdac-biomarker", "alzheimers-apoe-network"],
+  omics: ["pdac-biomarker", "alzheimers-apoe-network", "regsplicenet"],
   "protein-dynamics": ["idp-dynamics", "cryptic-pocket-hunter"],
   "drug-discovery": ["drug-response-profiler", "multiomics-organoid-drug-resistance"],
-  "interpretable-bioai": ["pdac-biomarker", "drug-response-profiler"],
+  "interpretable-bioai": ["pdac-biomarker", "drug-response-profiler", "regsplicenet"],
 };
 export function ResearchAreasApp() {
   const open = useWindowStore((state) => state.openWindow);

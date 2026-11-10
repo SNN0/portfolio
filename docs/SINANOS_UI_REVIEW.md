@@ -40,3 +40,7 @@ Source checks use the working files because the graph generation predates these 
 - Browser checks: nine desktop entries and six project files listed; project opened from terminal; history and completion verified; reverse rectangle selected six icons; Ctrl-click added a seventh; group movement translated all six selected icons by the same delta; Ctrl+A selected nine; Escape cleared selection; positions survived reload. Mobile terminal at 390px had no horizontal overflow. Console had no errors.
 - Five Node regression tests cover desktop listing, path navigation, all app/CV mappings, all project open/read mappings, completion, shortcuts and errors.
 - Graph service was unavailable during this follow-up; exact source files were used.
+
+## Updated CV synchronization
+
+The updated CV adds RegSpliceNet (2026): a PyTorch probabilistic encoder-decoder, 50-dimensional donor-level latent summaries, frozen-model application to new donors and external cohorts, and covariate-adjusted testing against Braak, CERAD and cognitive phenotypes. Added the seventh research file to Explorer, the Disease & omics folder and Research Matrix; terminal listings derive from the same project data. Updated the master's thesis and expected July 2027 completion, and added PyTorch, PyTorch Geometric and scikit-learn to methods. Publication statuses remain unchanged. Both repository PDF copies match the supplied CV byte-for-byte.

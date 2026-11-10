@@ -22,6 +22,23 @@ export const projects: Project[] = [
     mission: "Design a deep learning pipeline to predict transient cryptic druggable pockets in dynamic and disordered protein systems.", biologicalQuestion: "Can dynamic, geometric, and chemical atom-level descriptors reveal temporary druggable states in proteins that are difficult to target using static structures?", dataLayer: ["MD simulation frames", "Atom-level descriptors", "Dynamic features", "Geometric features", "Chemical features"], pipeline: ["MD simulation frame extraction", "Atom-level descriptor engineering", "Dynamic/geometric/chemical feature integration", "Graph neural representation learning", "Temporal pocket formation modeling", "Candidate cryptic state prioritization"], modelStack: ["GNN", "LSTM", "Atom-level descriptors", "Dynamic pocket modeling", "Druggability analysis"], researchSignal: "Reframed druggability as a time-dependent molecular event by modeling transient pocket formation in dynamic protein ensembles.", whyItMatters: "Some disease-relevant proteins may appear undruggable in static structures. Dynamic modeling can reveal transient therapeutic opportunities that only exist in specific conformational states.", publicViewNote: "Public summary only. Active project details, source code, model weights, and unpublished outputs are intentionally hidden."
   },
   {
+    id: "regsplicenet",
+    title: "RegSpliceNet: Latent Modeling of Splicing Regulation in Alzheimer's Disease",
+    appName: "RegSpliceNet.app",
+    institution: "Gebze Technical University",
+    year: "2026",
+    status: "Research project",
+    domain: ["Splicing regulation", "Alzheimer's disease", "Probabilistic modeling"],
+    mission: "Model donor-level splicing regulation using a probabilistic encoder-decoder and evaluate latent representations against Alzheimer's disease phenotypes.",
+    biologicalQuestion: "How can donor-level exon-inclusion and skipping counts be represented in a latent space and evaluated against neuropathological and cognitive phenotypes?",
+    dataLayer: ["Donor-level exon-inclusion and exon-skipping read counts", "New donors and external cohorts", "Braak, CERAD, and cognitive phenotypes", "Covariates for adjusted phenotype analyses"],
+    pipeline: ["Exon-inclusion/skipping read counts", "Probabilistic encoder-decoder in PyTorch", "50-dimensional donor latent summary", "Frozen-model application to new donors", "External-cohort application", "Covariate-adjusted phenotype testing"],
+    modelStack: ["PyTorch", "VAE-style encoder-decoder", "50-dimensional latent representation", "Covariate adjustment"],
+    researchSignal: "Built a donor-level latent representation and applied the frozen model to new donors and external cohorts; tested latent scores against Braak, CERAD, and cognitive phenotypes with covariate adjustment.",
+    whyItMatters: "A shared latent representation provides a way to examine post-transcriptional regulatory heterogeneity across donors and relate it to disease phenotypes.",
+    publicViewNote: "Public research summary based on the CV.",
+  },
+  {
     id: "multiomics-organoid-drug-resistance",
     title: "Multi-omics Integration, AI, and Organoid Technologies for Investigating Cancer Drug Efficacy and Resistance",
     appName: "Organoid_Research.app",
@@ -47,6 +64,7 @@ export const projects: Project[] = [
 ];
 
 export const projectContributions: Record<string, string> = {
+  regsplicenet: "Developed a probabilistic encoder-decoder in PyTorch to summarize each donor's splicing read counts in 50 latent dimensions. Applied the frozen model to new donors and external cohorts, and tested phenotype associations with covariate adjustment.",
   "cryptic-pocket-hunter": "Designed dynamic, geometric, and chemical atom-level descriptors and a pipeline combining GNNs with LSTM networks.",
   "idp-dynamics": "Developed GCN and GRU models for conformational prediction and compared force-field behavior in structural analysis.",
   "pdac-biomarker": "Developed classification models, selected features and hub genes, and evaluated biomarker relevance through survival analysis.",
