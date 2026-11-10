@@ -40,9 +40,9 @@ export function useDesktopLayout() {
     } catch {}
   }, []);
 
-  const moveIcon = useCallback((id: string, position: DesktopPosition) => {
+  const moveIcons = useCallback((updates: DesktopPositions) => {
     setPositions((current) => {
-      const next = { ...current, [id]: position };
+      const next = { ...current, ...updates };
       try { localStorage.setItem(storageKey, JSON.stringify(next)); } catch {}
       return next;
     });
@@ -53,5 +53,5 @@ export function useDesktopLayout() {
     try { localStorage.removeItem(storageKey); } catch {}
   }, []);
 
-  return { positions, moveIcon, resetLayout };
+  return { positions, moveIcon: (id: string, position: DesktopPosition) => moveIcons({ [id]: position }), moveIcons, resetLayout };
 }

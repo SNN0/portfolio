@@ -50,6 +50,12 @@ Projects uses a Research Explorer: select a file to preview it, then double-clic
 
 Visual changes are in `src/styles/workstation.css`. The per-application review and browser checks are recorded in `docs/SINANOS_UI_REVIEW.md`.
 
+Drag from empty desktop space to draw a blue selection box. Ctrl/Cmd-click toggles individual items, Shift adds items, Ctrl/Cmd+A selects all, and Escape clears the selection. Dragging a selected icon moves the selection as a group; positions persist locally. Reset icon layout restores defaults.
+
+The terminal starts at `C:\Users\visitor\Desktop`. `ls` / `dir` list the same files shown on the desktop. Use `cd Projects`, `dir`, and `open IDP_Dynamics_Modeler.app` to navigate and open a research case. `cat` / `type` read available text summaries, `cd ..` goes back, and `start Contact.vcf` opens Contact. Existing portfolio shortcuts remain available through `help`. Arrow keys recall history, Tab completes commands/filenames, Ctrl+L clears output, and Ctrl+C cancels input. This is an in-browser portfolio filesystem.
+
+Run terminal regression checks with `node --test tests/terminal-engine.test.cjs`.
+
 ## Deployment
 
 Vercel is recommended. Import the repository, use the default Next.js settings, and deploy from the production branch. Before launch, confirm publication statuses, contact links, CV content, and the canonical domain in `src/app/layout.tsx` and `src/app/sitemap.ts`.

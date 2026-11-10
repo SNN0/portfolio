@@ -32,3 +32,11 @@ Shared improvements include app-specific title-bar icons, maximize/restore contr
 - TypeScript validation and the final production build passed. The production build used an isolated temporary copy, which was removed after verification.
 
 Source checks use the working files because the graph generation predates these edits.
+
+## Terminal and desktop interaction follow-up
+
+- Shared desktop directory powers both icons and terminal listings; added paths, directory navigation, file opening/reading, command history and completion.
+- Blue selection rectangle supports intersection selection in either drag direction, modifier selection, select all, Escape, group movement and persistent layout. Disabled native browser image dragging to keep icon movement reliable.
+- Browser checks: nine desktop entries and six project files listed; project opened from terminal; history and completion verified; reverse rectangle selected six icons; Ctrl-click added a seventh; group movement translated all six selected icons by the same delta; Ctrl+A selected nine; Escape cleared selection; positions survived reload. Mobile terminal at 390px had no horizontal overflow. Console had no errors.
+- Five Node regression tests cover desktop listing, path navigation, all app/CV mappings, all project open/read mappings, completion, shortcuts and errors.
+- Graph service was unavailable during this follow-up; exact source files were used.
