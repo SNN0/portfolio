@@ -12,6 +12,7 @@ import { DraggableDesktopItem } from "@/components/desktop/DraggableDesktopItem"
 import { DesktopStatusPanel } from "@/components/desktop/DesktopStatusPanel";
 import { WindowManager } from "@/components/windows/WindowManager";
 import { Taskbar } from "@/components/desktop/Taskbar";
+import { CvAnalytics, trackCvDownload } from "@/components/common/CvAnalytics";
 import type { AppId } from "@/types/window";
 
 const mobileIcons: Partial<Record<AppId, typeof Network>> = { about: Contact, research: Network, projects: FolderLock, "model-zoo": FlaskConical, publications: FileText, "lab-notes": BookOpenText, terminal: TerminalSquare, contact: Contact };
@@ -26,6 +27,7 @@ export function Desktop() {
   const { positions, moveIcons, resetLayout } = useDesktopLayout();
   useHashRouter(true);
   const downloadCv = () => {
+    trackCvDownload();
     const link = document.createElement("a");
     link.href = profile.cvPath;
     link.download = "Sinan_Eyuboglu_CV.pdf";
@@ -59,6 +61,7 @@ export function Desktop() {
   };
 
   return <main className="desktop">
+    <CvAnalytics />
     <div ref={gridRef} className="desktop-grid" aria-label="SinanOS applications" tabIndex={0} onPointerDown={(event) => {
       if (event.target !== event.currentTarget || event.button !== 0 || event.pointerType === "touch") return;
       event.preventDefault(); event.currentTarget.focus();
@@ -68,7 +71,16 @@ export function Desktop() {
       setSelectedIcons(base);
       setSelection({ x: event.clientX - bounds.left, y: event.clientY - bounds.top, width: 0, height: 0 });
       event.currentTarget.setPointerCapture(event.pointerId);
-    }} onPointerMove={updateSelection} onPointerUp={(event) => {
+    }} onPointerMove={(event) => {
+      updateSelection(event);
+      if (event.pointerType !== "mouse" || event.buttons || event.target !== event.currentTarget) return;
+      const grid = event.currentTarget;
+      grid.style.setProperty("--pointer-drift-x", `${(event.clientX / grid.clientWidth - 0.5) * 18}px`);
+      grid.style.setProperty("--pointer-drift-y", `${(event.clientY / grid.clientHeight - 0.5) * 18}px`);
+    }} onPointerLeave={(event) => {
+      event.currentTarget.style.removeProperty("--pointer-drift-x");
+      event.currentTarget.style.removeProperty("--pointer-drift-y");
+    }} onPointerUp={(event) => {
       if (!selectionDrag.current || selectionDrag.current.pointerId !== event.pointerId) return;
       updateSelection(event); selectionDrag.current = null; setSelection(null);
       event.currentTarget.releasePointerCapture(event.pointerId);
@@ -76,6 +88,7 @@ export function Desktop() {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") { event.preventDefault(); setSelectedIcons(desktopEntries.map((entry) => entry.id)); }
       if (event.key === "Escape") { selectionDrag.current = null; setSelection(null); setSelectedIcons([]); }
     }}>
+      <div className="desktop-motes" aria-hidden="true" />
       {desktopEntries.map((item) => <DraggableDesktopItem key={item.id} position={positions[item.id]} onMove={(position) => moveSelection(item.id, position)} onSelect={() => {}}><DesktopIcon label={item.label} iconPath={item.iconPath || undefined} icon={item.id === "cv" ? FileDown : undefined} selected={selectedIcons.includes(item.id)} onSelect={(event) => selectIcon(item.id, event)} onOpen={() => item.app ? open(item.app) : downloadCv()}/></DraggableDesktopItem>)}
       {selection && <div className="desktop-selection" aria-hidden="true" style={{ left: selection.x, top: selection.y, width: selection.width, height: selection.height }}/>}
       <span className="sr-only" role="status">{selectedIcons.length} desktop items selected</span>

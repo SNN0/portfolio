@@ -258,6 +258,55 @@
   .window-content .contact-grid { grid-template-columns: 1fr; }
 }
 .desktop-grid { touch-action: none; user-select: none; }
+.desktop-motes {
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 25% 20%, #b1e4ed55 1px, transparent 2px),
+    radial-gradient(circle at 52% 39%, #a5d4eb44 1px, transparent 2px),
+    radial-gradient(circle at 70% 12%, #a5d4eb50 1px, transparent 2px),
+    radial-gradient(circle at 39% 66%, #b1e4ed45 1px, transparent 2px),
+    radial-gradient(circle at 82% 53%, #a5d4eb55 1px, transparent 2px),
+    radial-gradient(circle at 63% 80%, #b1e4ed44 1px, transparent 2px),
+    radial-gradient(circle at 91% 75%, #a5d4eb50 1px, transparent 2px),
+    radial-gradient(circle at 21% 83%, #b1e4ed45 1px, transparent 2px),
+    radial-gradient(circle at 48% 12%, #b1e4ed44 1px, transparent 2px),
+    radial-gradient(circle at 73% 61%, #a5d4eb44 1px, transparent 2px);
+  transform: translate(var(--pointer-drift-x, 0px), var(--pointer-drift-y, 0px));
+  transition: transform 420ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .desktop-motes { transform: none; transition: none; }
+}
+.music-tray { display: flex; align-items: center; }
+.music-toggle { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid transparent; }
+.music-toggle:hover, .music-toggle[aria-expanded="true"] { background: #b9c3cb; border-color: #7b8791 #fff #fff #7b8791; }
+.music-panel {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  right: 4px;
+  width: min(326px, calc(100vw - 8px));
+  max-height: calc(100dvh - 55px);
+  overflow: auto;
+  padding: 4px 8px 8px;
+  border: 2px solid;
+  border-color: #fff #646d74 #646d74 #fff;
+  background: #d5d9d9;
+  box-shadow: 3px 4px 0 #0004;
+  font: 12px Tahoma, sans-serif;
+}
+.music-panel header { display: flex; align-items: center; justify-content: space-between; background: #143761; color: #fff; padding: 3px 5px; margin: 0 -4px 7px; }
+.music-panel button { padding: 3px 7px; color: #172330; background: #dfe3e3; border: 1px solid; border-color: #fff #6c747a #6c747a #fff; }
+.music-panel header button { padding: 1px; }
+.music-video { width: 100%; height: 200px; background: #111925; }
+.music-video iframe { display: block; width: 100%; height: 200px; }
+.music-panel p { margin: 6px 0; }
+.music-panel a { color: #143761; text-decoration: underline; }
+.music-panel form, .music-volume { display: flex; align-items: center; gap: 7px; margin-top: 7px; }
+.music-panel form input, .music-volume input { flex: 1; min-width: 0; }
+.music-panel form input { border: 1px solid #808a92; background: #fff; padding: 4px; }
+.system-tray .music-volume span { display: inline; }
 .desktop-selection { position: absolute; z-index: 999; pointer-events: none; border: 1px solid #62a6ff; background: rgba(42, 117, 224, .28); box-shadow: inset 0 0 0 1px rgba(182, 216, 255, .16); }
 .desktop-icon.selected { border-color: #62a6ff; background: rgba(42,117,224,.24); }
 .terminal-app form { flex-wrap: wrap; }

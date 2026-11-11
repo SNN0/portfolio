@@ -3,6 +3,8 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { desktopPath, runTerminalCommand, terminalCompletions, terminalPrompt } from "@/lib/terminalEngine";
 import { useWindowStore } from "@/hooks/useWindowStore";
+import { profile } from "@/data/profile";
+import { trackCvDownload } from "@/components/common/CvAnalytics";
 
 type Line = { type: "command" | "output"; text: string };
 
@@ -34,6 +36,7 @@ export function TerminalApp() {
     if (result.clear) setLines([]); else setLines((current) => [...current, { type: "command", text: `${terminalPrompt(cwd)} ${command}` }, ...(result.output ? [{ type: "output" as const, text: result.output }] : [])]);
     if (result.cwd) setCwd(result.cwd);
     if (result.open) open(result.open, result.projectId ? { projectId: result.projectId } : undefined);
+    if (result.href === profile.cvPath) trackCvDownload();
     if (result.href) window.open(result.href, "_blank", "noopener,noreferrer");
   };
 
